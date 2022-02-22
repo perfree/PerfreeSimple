@@ -1,0 +1,16 @@
+#include("/static/themes/PerfreeSimple/_inc/_layout.html")
+#@layout()
+#define content()
+<div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+    <div class="article-box">
+        #articlePage(pageSize=10)
+            #include("/static/themes/PerfreeSimple/_inc/_artList.html")
+        #end
+        <div class="layui-card">
+            <div class="layui-card-body" style="text-align: center;">
+                #pageRender(articlePage, preText="上一页",nextText="下一页", pagerBoxClass="perfree-page-box", pagerClass="page-item pjax")
+            </div>
+        </div>
+    </div>
+</div>
+#end

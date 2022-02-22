@@ -1,0 +1,72 @@
+<div class="layui-tab-item">
+    <form class="layui-form" action="">
+        <div class="layui-input-inline"  style="display: none;">
+            <select lay-verify="" type="hidden"></select>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">赞赏</label>
+            <div class="layui-input-block" style="margin-left: 130px;width: 200px">
+                <select name="page_appreciate">
+                    <option value="" #(optionCompare('page_appreciate', '') ? 'selected': '')>默认</option>
+                    <option value="true" #(optionCompare('page_appreciate', 'true') ? 'selected': '')>启用</option>
+                    <option value="false" #(optionCompare('page_appreciate', 'false') ? 'selected': '')>关闭</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">支付宝收款码</label>
+            <div class="layui-input-block">
+                <div class="p-upload-box" id="perfree_alipay">
+                    <input type="hidden" value="#option('perfree_alipay')" name="perfree_alipay">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">微信收款码</label>
+            <div class="layui-input-block">
+                <div class="p-upload-box" id="perfree_wechat">
+                    <input type="hidden" value="#option('perfree_wechat')" name="perfree_wechat">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">全站pjax</label>
+            <div class="layui-input-block" style="margin-left: 130px;width: 200px">
+                <select name="page_pjax">
+                    <option value="" #(optionCompare('page_pjax', '') ? 'selected': '')>默认</option>
+                    <option value="true" #(optionCompare('page_pjax', 'true') ? 'selected': '')>启用</option>
+                    <option value="false" #(optionCompare('page_pjax', 'false') ? 'selected': '')>关闭</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">底部左侧信息</label>
+            <div class="layui-input-block">
+                <input type="text" value="#option('page_footer_left')" name="page_footer_left" placeholder="如:© 2019 Perfree版权所有 豫ICP备xxxxxxxxxxxx号" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">底部右侧信息</label>
+            <div class="layui-input-block">
+                <textarea name="page_footer_right" placeholder="随意发挥,支持html" class="layui-textarea">#option('page_footer_right')</textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">全局右侧广告</label>
+            <div class="layui-input-block">
+                <textarea name="page_ad_code" placeholder="这里可以填写谷歌,百度等广告代码" class="layui-textarea">#option('page_ad_code')</textarea>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn addBtn" lay-submit lay-filter="optionForm"><i class="fa fa-check" aria-hidden="true"></i> 保存设置</button>
+            </div>
+        </div>
+    </form>
+</div>

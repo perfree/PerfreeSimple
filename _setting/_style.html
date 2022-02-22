@@ -1,0 +1,158 @@
+<div class="layui-tab-item">
+    <form class="layui-form" action="">
+        <div class="layui-input-inline"  style="display: none;">
+            <select lay-verify="" type="hidden"></select>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">主题配色</label>
+            <div class="layui-input-block" style="margin-left: 130px;width: 200px">
+                <select name="page_theme_style">
+                    <option value="" #(optionCompare('page_theme_style', '') ? 'selected': '')>默认</option>
+                    <option value="gray" #(optionCompare('page_theme_style', 'gray') ? 'selected': '')>gray</option>
+                    <option value="black" #(optionCompare('page_theme_style', 'black') ? 'selected': '')>black</option>
+                    <option value="515a6e" #(optionCompare('page_theme_style', '515a6e') ? 'selected': '')>515a6e</option>
+                </select>
+            </div>
+        </div>
+        <div class="layui-form-item">
+            <label class="layui-form-label">代码样式</label>
+            <div class="layui-input-block" style="margin-left: 130px;width: 200px">
+                <select name="page_code_style">
+                    <option value="" #(optionCompare('page_code_style', '') ? 'selected': '')>默认</option>
+                    <option value="a11y-dark" #(optionCompare('page_code_style', 'a11y-dark') ? 'selected': '')>a11y-dark</option>
+                    <option value="a11y-light" #(optionCompare('page_code_style', 'a11y-light') ? 'selected': '')>a11y-light</option>
+                    <option value="agate" #(optionCompare('page_code_style', 'agate') ? 'selected': '')>agate</option>
+                    <option value="androidstudio" #(optionCompare('page_code_style', 'androidstudio') ? 'selected': '')>androidstudio</option>
+                    <option value="an-old-hope" #(optionCompare('page_code_style', 'an-old-hope') ? 'selected': '')>an-old-hope</option>
+                    <option value="arduino-light" #(optionCompare('page_code_style', 'arduino-light') ? 'selected': '')>arduino-light</option>
+                    <option value="arta" #(optionCompare('page_code_style', 'arta') ? 'selected': '')>arta</option>
+                    <option value="ascetic" #(optionCompare('page_code_style', 'ascetic') ? 'selected': '')>ascetic</option>
+                    <option value="atelier-cave-dark" #(optionCompare('page_code_style', 'atelier-cave-dark') ? 'selected': '')>atelier-cave-dark</option>
+                    <option value="atelier-cave-light" #(optionCompare('page_code_style', 'atelier-cave-light') ? 'selected': '')>atelier-cave-light</option>
+                    <option value="atelier-dune-dark" #(optionCompare('page_code_style', 'atelier-dune-dark') ? 'selected': '')>atelier-dune-dark</option>
+                    <option value="atelier-dune-light" #(optionCompare('page_code_style', 'atelier-dune-light') ? 'selected': '')>atelier-dune-light</option>
+                    <option value="atelier-estuary-dark" #(optionCompare('page_code_style', 'atelier-estuary-dark') ? 'selected': '')>atelier-estuary-dark</option>
+                    <option value="atelier-estuary-light" #(optionCompare('page_code_style', 'atelier-estuary-light') ? 'selected': '')>atelier-estuary-light</option>
+                    <option value="atelier-forest-dark" #(optionCompare('page_code_style', 'atelier-forest-dark') ? 'selected': '')>atelier-forest-dark</option>
+                    <option value="atelier-forest-light" #(optionCompare('page_code_style', 'atelier-forest-light') ? 'selected': '')>atelier-forest-light</option>
+                    <option value="atelier-heath-dark" #(optionCompare('page_code_style', 'atelier-heath-dark') ? 'selected': '')>atelier-heath-dark</option>
+                    <option value="atelier-heath-light" #(optionCompare('page_code_style', 'atelier-heath-light') ? 'selected': '')>atelier-heath-light</option>
+                    <option value="atelier-lakeside-dark" #(optionCompare('page_code_style', 'atelier-lakeside-dark') ? 'selected': '')>atelier-lakeside-dark</option>
+                    <option value="atelier-lakeside-light" #(optionCompare('page_code_style', 'atelier-lakeside-light') ? 'selected': '')>atelier-lakeside-light</option>
+                    <option value="atelier-plateau-dark" #(optionCompare('page_code_style', 'atelier-plateau-dark') ? 'selected': '')>atelier-plateau-dark</option>
+                    <option value="atelier-plateau-light" #(optionCompare('page_code_style', 'atelier-plateau-light') ? 'selected': '')>atelier-plateau-light</option>
+                    <option value="atelier-savanna-dark" #(optionCompare('page_code_style', 'atelier-savanna-dark') ? 'selected': '')>atelier-savanna-dark</option>
+                    <option value="atelier-savanna-light" #(optionCompare('page_code_style', 'atelier-savanna-light') ? 'selected': '')>atelier-savanna-light</option>
+                    <option value="atelier-seaside-dark" #(optionCompare('page_code_style', 'atelier-seaside-dark') ? 'selected': '')>atelier-seaside-dark</option>
+                    <option value="atelier-seaside-light" #(optionCompare('page_code_style', 'atelier-seaside-light') ? 'selected': '')>atelier-seaside-light</option>
+                    <option value="atelier-sulphurpool-dark" #(optionCompare('page_code_style', 'atelier-sulphurpool-dark') ? 'selected': '')>atelier-sulphurpool-dark</option>
+                    <option value="atelier-sulphurpool-light" #(optionCompare('page_code_style', 'atelier-sulphurpool-light') ? 'selected': '')>atelier-sulphurpool-light</option>
+                    <option value="atom-one-dark" #(optionCompare('page_code_style', 'atom-one-dark') ? 'selected': '')>atom-one-dark</option>
+                    <option value="atom-one-dark-reasonable" #(optionCompare('page_code_style', 'atom-one-dark-reasonable') ? 'selected': '')>atom-one-dark-reasonable</option>
+                    <option value="atom-one-light" #(optionCompare('page_code_style', 'atom-one-light') ? 'selected': '')>atom-one-light</option>
+                    <option value="brown-paper" #(optionCompare('page_code_style', 'brown-paper') ? 'selected': '')>brown-paper</option>
+                    <option value="codepen-embed" #(optionCompare('page_code_style', 'codepen-embed') ? 'selected': '')>codepen-embed</option>
+                    <option value="color-brewer" #(optionCompare('page_code_style', 'color-brewer') ? 'selected': '')>color-brewer</option>
+                    <option value="darcula" #(optionCompare('page_code_style', 'darcula') ? 'selected': '')>darcula</option>
+                    <option value="dark" #(optionCompare('page_code_style', 'dark') ? 'selected': '')>dark</option>
+                    <option value="darkula" #(optionCompare('page_code_style', 'darkula') ? 'selected': '')>darkula</option>
+                    <option value="default" #(optionCompare('page_code_style', 'default') ? 'selected': '')>default</option>
+                    <option value="docco" #(optionCompare('page_code_style', 'docco') ? 'selected': '')>docco</option>
+                    <option value="dracula" #(optionCompare('page_code_style', 'dracula') ? 'selected': '')>dracula</option>
+                    <option value="far" #(optionCompare('page_code_style', 'far') ? 'selected': '')>far</option>
+                    <option value="foundation" #(optionCompare('page_code_style', 'foundation') ? 'selected': '')>foundation</option>
+                    <option value="github" #(optionCompare('page_code_style', 'github') ? 'selected': '')>github</option>
+                    <option value="github-gist" #(optionCompare('page_code_style', 'github-gist') ? 'selected': '')>github-gist</option>
+                    <option value="gml" #(optionCompare('page_code_style', 'gml') ? 'selected': '')>gml</option>
+                    <option value="googlecode" #(optionCompare('page_code_style', 'googlecode') ? 'selected': '')>googlecode</option>
+                    <option value="grayscale" #(optionCompare('page_code_style', 'grayscale') ? 'selected': '')>grayscale</option>
+                    <option value="gruvbox-dark" #(optionCompare('page_code_style', 'gruvbox-dark') ? 'selected': '')>gruvbox-dark</option>
+                    <option value="gruvbox-light" #(optionCompare('page_code_style', 'gruvbox-light') ? 'selected': '')>gruvbox-light</option>
+                    <option value="hopscotch" #(optionCompare('page_code_style', 'hopscotch') ? 'selected': '')>hopscotch</option>
+                    <option value="hybrid" #(optionCompare('page_code_style', 'hybrid') ? 'selected': '')>hybrid</option>
+                    <option value="idea" #(optionCompare('page_code_style', 'idea') ? 'selected': '')>idea</option>
+                    <option value="ir-black" #(optionCompare('page_code_style', 'ir-black') ? 'selected': '')>ir-black</option>
+                    <option value="isbl-editor-dark" #(optionCompare('page_code_style', 'isbl-editor-dark') ? 'selected': '')>isbl-editor-dark</option>
+                    <option value="isbl-editor-light" #(optionCompare('page_code_style', 'isbl-editor-light') ? 'selected': '')>isbl-editor-light</option>
+                    <option value="kimbie.dark" #(optionCompare('page_code_style', 'kimbie.dark') ? 'selected': '')>kimbie.dark</option>
+                    <option value="kimbie.light" #(optionCompare('page_code_style', 'kimbie.light') ? 'selected': '')>kimbie.light</option>
+                    <option value="lightfair" #(optionCompare('page_code_style', 'lightfair') ? 'selected': '')>lightfair</option>
+                    <option value="magula" #(optionCompare('page_code_style', 'magula') ? 'selected': '')>magula</option>
+                    <option value="mono-blue" #(optionCompare('page_code_style', 'mono-blue') ? 'selected': '')>mono-blue</option>
+                    <option value="monokai" #(optionCompare('page_code_style', 'monokai') ? 'selected': '')>monokai</option>
+                    <option value="monokai-sublime" #(optionCompare('page_code_style', 'monokai-sublime') ? 'selected': '')>monokai-sublime</option>
+                    <option value="nord" #(optionCompare('page_code_style', 'nord') ? 'selected': '')>nord</option>
+                    <option value="obsidian" #(optionCompare('page_code_style', 'obsidian') ? 'selected': '')>obsidian</option>
+                    <option value="ocean" #(optionCompare('page_code_style', 'ocean') ? 'selected': '')>ocean</option>
+                    <option value="paraiso-dark" #(optionCompare('page_code_style', 'paraiso-dark') ? 'selected': '')>paraiso-dark</option>
+                    <option value="paraiso-light" #(optionCompare('page_code_style', 'paraiso-light') ? 'selected': '')>paraiso-light</option>
+                    <option value="pojoaque" #(optionCompare('page_code_style', 'pojoaque') ? 'selected': '')>pojoaque</option>
+                    <option value="purebasic" #(optionCompare('page_code_style', 'purebasic') ? 'selected': '')>purebasic</option>
+                    <option value="qtcreator_dark" #(optionCompare('page_code_style', 'qtcreator_dark') ? 'selected': '')>qtcreator_dark</option>
+                    <option value="qtcreator_light" #(optionCompare('page_code_style', 'qtcreator_light') ? 'selected': '')>qtcreator_light</option>
+                    <option value="railscasts" #(optionCompare('page_code_style', 'railscasts') ? 'selected': '')>railscasts</option>
+                    <option value="rainbow" #(optionCompare('page_code_style', 'rainbow') ? 'selected': '')>rainbow</option>
+                    <option value="routeros" #(optionCompare('page_code_style', 'routeros') ? 'selected': '')>routeros</option>
+                    <option value="school-book" #(optionCompare('page_code_style', 'school-book') ? 'selected': '')>school-book</option>
+                    <option value="shades-of-purple" #(optionCompare('page_code_style', 'shades-of-purple') ? 'selected': '')>shades-of-purple</option>
+                    <option value="solarized-dark" #(optionCompare('page_code_style', 'solarized-dark') ? 'selected': '')>solarized-dark</option>
+                    <option value="solarized-light" #(optionCompare('page_code_style', 'solarized-light') ? 'selected': '')>solarized-light</option>
+                    <option value="sunburst" #(optionCompare('page_code_style', 'sunburst') ? 'selected': '')>sunburst</option>
+                    <option value="tomorrow" #(optionCompare('page_code_style', 'tomorrow') ? 'selected': '')>tomorrow</option>
+                    <option value="tomorrow-night" #(optionCompare('page_code_style', 'tomorrow-night') ? 'selected': '')>tomorrow-night</option>
+                    <option value="tomorrow-night-blue" #(optionCompare('page_code_style', 'tomorrow-night-blue') ? 'selected': '')>tomorrow-night-blue</option>
+                    <option value="tomorrow-night-bright" #(optionCompare('page_code_style', 'tomorrow-night-bright') ? 'selected': '')>tomorrow-night-bright</option>
+                    <option value="tomorrow-night-eighties" #(optionCompare('page_code_style', 'tomorrow-night-eighties') ? 'selected': '')>tomorrow-night-eighties</option>
+                    <option value="vs" #(optionCompare('page_code_style', 'vs') ? 'selected': '')>vs</option>
+                    <option value="vs2015" #(optionCompare('page_code_style', 'vs2015') ? 'selected': '')>vs2015</option>
+                    <option value="xcode" #(optionCompare('page_code_style', 'xcode') ? 'selected': '')>xcode</option>
+                    <option value="xt256" #(optionCompare('page_code_style', 'xt256') ? 'selected': '')>xt256</option>
+                    <option value="zenburn" #(optionCompare('page_code_style', 'zenburn') ? 'selected': '')>zenburn</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">代码行号</label>
+            <div class="layui-input-block" style="margin-left: 130px;width: 200px">
+                <select name="page_code_line">
+                    <option value="" #(optionCompare('page_code_line', '') ? 'selected': '')>默认</option>
+                    <option value="开启" #(optionCompare('page_code_line', '开启') ? 'selected': '')>开启</option>
+                    <option value="不开启" #(optionCompare('page_code_line', '不开启') ? 'selected': '')>不开启</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">缩略图获取</label>
+            <div class="layui-input-block" style="margin-left: 130px;width: 200px">
+                <select name="page_article_thumbnail">
+                    <option value="手动上传缩略图" #(optionCompare('page_article_thumbnail', '手动上传缩略图') ? 'selected': '')>手动上传缩略图</option>
+                    <option value="自动从文章获取" #(optionCompare('page_article_thumbnail', '自动从文章获取') ? 'selected': '')>自动从文章获取</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">背景颜色</label>
+            <div class="layui-input-block">
+                <input type="text" value="#option('page_background_color')" name="page_background_color" placeholder="直接填写颜色代码，如#FFFFFF" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">网页背景图</label>
+            <div class="layui-input-block">
+                <div class="p-upload-box" id="page_bacground-img">
+                    <input type="hidden" value="#option('page_bacground-img')" name="page_bacground-img">
+                </div>
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn addBtn" lay-submit lay-filter="optionForm"><i class="fa fa-check" aria-hidden="true"></i> 保存设置</button>
+            </div>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,141 @@
+#include("/static/themes/PerfreeSimple/_inc/_layout.html")
+#@layout()
+#define content()
+<div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+    <link rel="stylesheet" href="/static/themes/PerfreeSimple/static/plugin/vue-markdown/vue.css" media="all">
+    <link rel="stylesheet" href="/static/themes/PerfreeSimple/static/css/article.css" media="all">
+    <link rel="stylesheet" href="/static/themes/PerfreeSimple/comment/comment.css" media="all">
+    <script src="/static/themes/PerfreeSimple/static/js/article.js"></script>
+    <script src="/static/themes/PerfreeSimple/comment/comment.js"></script>
+    <!-- 文章start -->
+    <div class="layui-card">
+        <div class="layui-card-header article-title">
+            <h2>#(article.title ??)</h2>
+            <p>
+                <i class="fa fa-user-o"></i> #(article.user.userName ??)&nbsp;
+                <i class="fa fa-eye"></i>  #(article.viewCount ??)浏览&nbsp;
+                <i class="fa fa-comment-o"></i> #(article.commentCount ??)评论&nbsp;
+                <i class="fa fa-clock-o"></i> #date(article.createTime, "yyyy年MM月dd日")
+            </p>
+        </div>
+        <div class="layui-card-body article-body">
+            <div class="perfree-article-content">
+                #mdToHtml(article.content ??)
+            </div>
+            <div class="article-content-bottom">
+                <span class="article-content-bottom-left"><i class="fa fa-clock-o"></i> 最后修改于 #date(article.updateTime, "yyyy-MM-dd HH:mm:ss")</span>
+            </div>
+            #if(option('page_appreciate') == null || optionCompare('page_appreciate', 'true'))
+            <div class="appreciate-box">
+                <button class="layui-btn layui-btn-radius layui-btn-normal" onclick="appreciate();">
+                    <i class="layui-icon">&#xe65e;</i>赞赏
+                </button>
+                <span class="appreciate-tip">如果觉得我的文章对你有用，请随意赞赏</span>
+            </div>
+            <div id="appreciate-content">
+                <div class="appreciate-content-tip">扫一扫支付</div>
+                <img src="#option('perfree_alipay' ??)" id="appreciate-content-aLiImg">
+                <img src="#option('perfree_wechat' ??)" id="appreciate-content-wechatImg">
+                <div class="appreciate-content-btn-box">
+                    <button class="layui-btn layui-btn-normal" onclick="changeImg(1);">支付宝支付</button>
+                    <button class="layui-btn" onclick="changeImg(2);">微信支付</button>
+                </div>
+            </div>
+            #end
+            <div class="switch-article">
+                #preArticle()
+                    #if(preArticle)
+                        <a href="#(preArticle.url)" title="#(preArticle.title)" class="pre-article pjax">
+                            <i class="fa fa-angle-double-left" aria-hidden="true"></i> 上一篇
+                        </a>
+                    #end
+                #end
+                #nextArticle()
+                    #if(nextArticle)
+                        <a href="#(nextArticle.url)" title="#(nextArticle.title)" class="next-article pjax">
+                            下一篇 <i class="fa fa-angle-double-right" aria-hidden="true"></i>
+                        </a>
+                    #end
+                #end
+            </div>
+        </div>
+    </div>
+
+    <div class="layui-card">
+        <div class="layui-card-header" style="padding: 0 20px;">发表评论</div>
+        <div class="layui-card-body revert-body">
+            #include("/static/themes/PerfreeSimple/comment/comment.html")
+        </div>
+    </div>
+
+    <script>
+        layui.use(['layer'], function() {
+            layer = layui.layer;
+            layer.photos({
+                photos: '.perfree-article-content',
+                anim: 5
+            });
+        });
+
+        function appreciate() {
+            layer.open({
+                type: 1,
+                title:'赞赏作者',
+                shade: 0.6,
+                shadeClose:true,
+                content: $('#appreciate-content')
+            });
+        }
+        $(document).on("mousewheel DOMMouseScroll", ".layui-layer-phimg img", function(e) {
+            var delta = (e.originalEvent.wheelDelta && (e.originalEvent.wheelDelta > 0 ? 1 : -1)) || // chrome & ie
+                (e.originalEvent.detail && (e.originalEvent.detail > 0 ? -1 : 1)); // firefox
+            var imagep = $(".layui-layer-phimg").parent().parent();
+            var image = $(".layui-layer-phimg").parent();
+            var h = image.height();
+            var w = image.width();
+            if(delta > 0) {
+                if(h < (window.innerHeight)) {
+                    h = h * 1.05;
+                    w = w * 1.05;
+                }
+            } else if(delta < 0) {
+                if(h > 100) {
+                    h = h * 0.95;
+                    w = w * 0.95;
+                }
+            }
+            imagep.css("top", (window.innerHeight - h) / 2);
+            imagep.css("left", (window.innerWidth - w) / 2);
+            image.height(h);
+            image.width(w);
+            imagep.height(h);
+            imagep.width(w);
+        });
+
+        function changeImg(type) {
+            if(type == 1){
+                $(".layui-layer-wrap > #appreciate-content-wechatImg").hide();
+                $(".layui-layer-wrap > #appreciate-content-aLiImg").show();
+            }else{
+                $(".layui-layer-wrap > #appreciate-content-aLiImg").hide();
+                $(".layui-layer-wrap > #appreciate-content-wechatImg").show();
+            }
+        }
+    </script>
+    #if(option('page_code_line') == null || option('page_code_line') != '不开启')
+    <script>
+        $('pre code').each(function(){
+            var lines = $(this).text().split('\n').length-1;
+            var $numbering = $('<ul/>').addClass('pre-numbering hljs');
+            $(this)
+                .addClass('has-numbering')
+                .parent()
+                .append($numbering);
+            for(i=1;i<=lines;i++){
+                $numbering.append($('<li/>').text(i+"."));
+            }
+        });
+    </script>
+    #end
+</div>
+#end

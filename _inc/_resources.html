@@ -1,0 +1,25 @@
+<!-- ico -->
+<link rel="icon" type="image/ico" href="#option('WEB_LOGO','/static/public/images/favicon.ico')">
+<link rel="stylesheet" href="/static/themes/PerfreeSimple/static/plugin/layui/css/layui.css" media="all">
+<link rel="stylesheet" href="/static/themes/PerfreeSimple/static/plugin/font-awesome/css/font-awesome.min.css" media="all">
+<link rel="stylesheet" href="/static/themes/PerfreeSimple/static/css/style.css" media="all">
+#if(option('page_theme_style') == null || option('page_theme_style') == "")
+<link rel="stylesheet" href="/static/themes/PerfreeSimple/static/theme/white.css" media="all">
+#else
+<link rel="stylesheet" href="/static/themes/PerfreeSimple/static/theme/#option('page_theme_style').css" media="all">
+#end
+<!-- 代码样式 -->
+<link rel="stylesheet" href="/static/themes/PerfreeSimple/static/plugin/highlight/styles/#option('page_code_style','vs').css" media="all">
+<script src="/static/themes/PerfreeSimple/static/plugin/jquery/jquery-3.2.1.min.js"></script>
+<script src="/static/themes/PerfreeSimple/static/plugin/layer/layer.js"></script>
+<script src="/static/themes/PerfreeSimple/static/plugin/layui/layui.js"></script>
+#if(option('page_pjax') == null || optionCompare('page_pjax', 'true'))
+<script src="/static/themes/PerfreeSimple/static/plugin/pjax/pjax.js"></script>
+#end
+<script src="/static/themes/PerfreeSimple/static/js/perfree.js"></script>
+<!-- 如后台配置了音乐播放器，则引入播放器文件 -->
+#if(option('music_id') != null && option('music_id') != '')
+    <link rel="stylesheet" href="/static/themes/PerfreeSimple/static/plugin/music/APlayer.min.css">
+    <script src="/static/themes/PerfreeSimple/static/plugin/music/APlayer.min.js"></script>
+    <script src="/static/themes/PerfreeSimple/static/plugin/music/Meting.min.js"></script>
+#end

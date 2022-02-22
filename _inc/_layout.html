@@ -1,0 +1,104 @@
+#define layout()
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="UTF-8">
+    <title>#(WEB_TITLE ?? '未设置')#(isBlank(SEO_TITLE) ? '': '-' + SEO_TITLE)</title>
+    <meta name="keywords" content="#(SEO_KEYWORD ?? WEB_META_KEYWORD)">
+    <meta name="description" content="#(SEO_DESC ?? WEB_META_DESC)">
+    <meta name="template" content="PerfreeSimple">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <!-- 引入资源文件 -->
+    #include("/static/themes/PerfreeSimple/_inc/_resources.html")
+    #@css?()
+</head>
+<body id="web-body">
+#if(option('page_background_color') != null)
+    <script>$("#web-body").css("background-color","#option('page_background_color')");</script>
+#end
+#if(option('page_bacground-img') != null)
+    <script>$("#web-body").css("background-image","url(#option('page_bacground-img'))");</script>
+#end
+<div style="overflow-x: hidden;min-height: 100%;">
+    <!-- 引入顶部导航栏 -->
+    #include("/static/themes/PerfreeSimple/_inc/_headerBar.html")
+    <!-- 内容部分start -->
+    <div class="layui-container perfree-content layui-anim-up">
+        <!-- 一言组件手机端，电脑端不展示start -->
+        <div class="layui-card phone-yiyan-box">
+            <div class="layui-card-body page-title-body">
+                <h2>#(WEB_NAME ??)</h2>
+                <div>
+                    <span id="hitokoto1"> 正在加载...</span>
+                </div>
+            </div>
+        </div>
+        <!-- 一言组件手机端，电脑端不展示end -->
+        <!-- 引入内容 -->
+        #@content()
+        <!-- 引入右侧边栏 -->
+        #include("/static/themes/PerfreeSimple/_inc/_rightBar.html")
+    </div>
+    <!-- 引入底栏 -->
+    #include("/static/themes/PerfreeSimple/_inc/_footBar.html")
+</div>
+<!-- 内容部分end -->
+<!-- 遮罩start -->
+<div class="mask"></div>
+<!-- 遮罩end -->
+#@script?()
+<script id="load-js-code">
+    //初始化layui,返回顶部按钮
+    layui.use(['util','element'], function(){
+        var util = layui.util,element = layui.element;;
+        util.fixbar({});
+    });
+    $('.tag').each(function(){
+        $(this).css("background-color",getRandomColor());
+    })
+    function getRandomColor(){
+        return '#'+(Math.random()*0xffffff<<0).toString(16);
+    }
+    getHitokoto();
+    function getHitokoto() {
+        $.get("https://v1.hitokoto.cn", function(result){
+            $("#hitokoto2").text(result.hitokoto + " -- " + result.from);
+            $("#hitokoto1").text(result.hitokoto + " -- " + result.from);
+        });
+    }
+</script>
+#if(option('page_pjax') == null || optionCompare('page_pjax', 'true'))
+<script>
+    //设置pjax
+    var pjax = new Pjax({
+        elements: ".pjax,form",
+        cacheBust: false,
+        debug: false,
+        selectors: [
+            "title",
+            "meta[name=description]",
+            "meta[name=keywords]",
+            ".loadJs",
+            ".perfree-content-left",
+            ".right-hot-article-box",
+            ".right-hot-tag",
+            ".layui-footer",
+            ".header-logout",
+            "#load-js-code"
+        ]
+    })
+    var index;
+    document.addEventListener('pjax:send', function () {
+        index = layer.load();
+    });
+    document.addEventListener('pjax:success', function() {
+        layer.close(index);
+    });
+    document.addEventListener('pjax:error', function() {
+        layer.msg("系统出现问题,请刷新网页");
+    });
+</script>
+#end
+</body>
+</html>
+#end

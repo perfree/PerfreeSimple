@@ -1,0 +1,24 @@
+#include("/static/themes/PerfreeSimple/_inc/_layout.html")
+#@layout()
+#define content()
+    <div class="layui-col-xs12 layui-col-sm7 layui-col-md8 perfree-content-left">
+        <div class="article-box">
+            #if(option('notice_content') != null)
+                <div class="layui-card list-article-box">
+                    <div class="layui-card-body" style="padding:10px 20px 10px 20px;">
+                        <i class="fa fa-bullhorn fa-lg"></i>
+                        <span class="notice" style="font-size: 1.1em;margin-left: 5px;">#option('notice_content')</span>
+                    </div>
+                </div>
+            #end
+            #articlePage(pageSize=10)
+                #include("/static/themes/PerfreeSimple/_inc/_artList.html")
+            #end
+            <div class="layui-card">
+                <div class="layui-card-body" style="text-align: center;">
+                    #pageRender(articlePage, preText="上一页",nextText="下一页", pagerBoxClass="perfree-page-box", pagerClass="page-item pjax")
+                </div>
+            </div>
+        </div>
+    </div>
+#end

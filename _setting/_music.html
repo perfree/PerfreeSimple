@@ -1,0 +1,20 @@
+<div class="layui-tab-item">
+    <form class="layui-form" action="">
+        <div class="layui-input-inline"  style="display: none;">
+            <select lay-verify="" type="hidden"></select>
+        </div>
+
+        <div class="layui-form-item">
+            <label class="layui-form-label">网易云歌单ID</label>
+            <div class="layui-input-block">
+                <input type="text" value="#option('music_id')" name="music_id" placeholder="网易云歌单ID" autocomplete="off" class="layui-input">
+            </div>
+        </div>
+
+        <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn addBtn" lay-submit lay-filter="optionForm"><i class="fa fa-check" aria-hidden="true"></i> 保存设置</button>
+            </div>
+        </div>
+    </form>
+</div>

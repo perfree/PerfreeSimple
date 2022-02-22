@@ -1,0 +1,122 @@
+<!-- 导航栏部分 -->
+<div class="header layui-bg-cyan pc-header">
+    <div class="layui-container">
+
+        <!-- 导航栏logo及文字start -->
+        <a class="logo-box pjax" href="/">
+            <i class="fa #option('page_logo_icon' ??) fa-lg"></i>
+            <span> #option('WEB_NAME','未设置')</span>
+        </a>
+        <!-- 导航栏logo及文字end -->
+
+        <!-- 导航栏菜单start -->
+        <ul class="layui-nav layui-bg-cyan" lay-filter="">
+            #menus()
+            <li class="layui-nav-item" lay-unselect>
+                <a href="/" class="pjax"><i class="fa fa-home"></i> 首页</a>
+            </li>
+                #for(menu : menus)
+                    #if(menu.childMenu !=null && menu.childMenu.size() > 0)
+                        <li class="layui-nav-item" lay-unselect>
+                            <a href="javascript:;" class="pjax">
+                                <i class="fa #(menu.icon ??)"></i> #(menu.name ??)
+                            </a>
+                            <dl class="layui-nav-child">
+                                #for(children: menu.childMenu)
+                                    <dd lay-unselect><a href="#(children.url ??)" class="pjax" target="#(children.target == 0 ? '_self' : '_blank')"> #(children.name ??)</a></dd>
+                                #end
+                            </dl>
+                        </li>
+                    #else
+                        <li class="layui-nav-item" lay-unselect>
+                            <a href="#(menu.url ??)" class="pjax" target="#(menu.target == 0 ? '_self' : '_blank')">
+                                <i class="fa #(menu.icon ??)"></i> #(menu.name ??)
+                            </a>
+                        </li>
+                    #end
+                #end
+            #end
+            #if(loginUser)
+                <li class="layui-nav-item">
+                    <a><img src="#(isBlank(loginUser.avatar) ? '/static/public/images/user.png': loginUser.avatar)?s=32" class="layui-nav-img">#(loginUser.userName ??)</a>
+                    <dl class="layui-nav-child">
+                        #if(loginUser.hasAdmin())
+                        <dd lay-unselect>
+                            <a href="/admin"> 后台管理 </a>
+                        </dd>
+                        #end
+                        <dd class="header-logout" lay-unselect>
+                            <a href="/logout"> 退出登录 </a>
+                        </dd>
+                    </dl>
+                </li>
+            #else
+                <li class="layui-nav-item login-box" lay-unselect>
+                    <a href="/login" class="login-btn"> 登录</a>|
+                    <a href="/register" class="register-btn"> 注册</a>
+                </li>
+            #end
+        </ul>
+        <!-- 导航栏菜单end -->
+    </div>
+</div>
+<!--移动端header-->
+<div class="phone-header layui-bg-cyan">
+    <a href="javascript:;" class="phone-open-nav-btn">
+        <i class="fa fa-bars" aria-hidden="true"></i>
+    </a>
+    <!-- 导航栏logo及文字start -->
+    <a class="logo-box pjax" href="/">
+        <i class="fa fa-#option('page_logo_icon' ??) fa-lg"></i>
+        <span>#option('WEB_NAME','未设置')</span>
+    </a>
+    <!-- 导航栏logo及文字end -->
+
+    <a class="phone-setting-btn">
+        <i class="fa fa-cog" aria-hidden="true"></i>
+    </a>
+    <!--移动端设置容器-->
+    <div class="phone-setting-box">
+        <div class="phone-search-form">
+            <form action="/article/search">
+                <input type="text" name="title" required placeholder="请输入关键字" autocomplete="off">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+        <div class="phone-my-message-box">
+            #if(loginUser)
+                <a href="javascript:;" class="my-name-img"><img src="#(isBlank(loginUser.avatar) ? '/static/public/images/user.png': loginUser.avatar)?s=32" class="layui-nav-img">#(loginUser.userName ??)</a>
+            #else
+                <a href="/login" class="login-btn"> 登录</a>
+                <span class="my-message-tarde">|</span>
+                <a href="/register" class="register-btn"> 注册</a>
+            #end
+        </div>
+    </div>
+</div>
+<!--移动端菜单-->
+<div class="phone-nav-box">
+    #menus()
+        <ul class="layui-nav layui-nav-tree layui-nav-side layui-bg-cyan" lay-filter="">
+            <li class="layui-nav-item" lay-unselect>
+                <a href="/" class="pjax nav-link"><i class="fa fa-home"></i> 首页</a>
+            </li>
+            #for(menu : menus)
+                #if(menu.childMenu !=null && menu.childMenu.size() > 0)
+                    <li class="layui-nav-item" lay-unselect>
+                        <a href="javascript:;" class="pjax"><i class="fa #(menu.icon ??)"></i> #(menu.name ??)</a>
+                        <dl class="layui-nav-child">
+                            #for(children: menu.childMenu)
+                                <dd lay-unselect><a href="#(children.url ??)" class="pjax nav-link" target="#(children.target == 0 ? '_self' : '_blank')"> #(children.name ??)</a></dd>
+                            #end
+                        </dl>
+                    </li>
+                #else
+                    <li class="layui-nav-item" lay-unselect>
+                        <a href="#(menu.url ??)" target="#(menu.target == 0 ? '_self' : '_blank')" class="pjax nav-link"><i class="fa #(menu.icon ??)"></i> #(menu.name ??)</a>
+                    </li>
+                #end
+            #end
+        </ul>
+    #end
+</div>

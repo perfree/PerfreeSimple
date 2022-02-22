@@ -1,0 +1,46 @@
+#for(article: articlePage.data)
+<div class="layui-card list-article-box">
+    <div class="layui-card-body">
+        #if(option('page_article_thumbnail') == null || option('page_article_thumbnail') == '手动上传缩略图')
+            #if(article.thumbnail != null && article.thumbnail != '')
+                <a class="article-img pjax" href="#(article.url ??)">
+                    <img src="#(article.thumbnail ??)" alt="#(article.title ??)" width="100%" height="300px"/>
+                </a>
+            #end
+        #else
+            #articleImage(article.content)
+                #if(images.size() > 0)
+                    <a class="article-img pjax" href="#(article.url ??)">
+                        <img src=" #(images.get(0))" alt="#(article.title ??)" width="100%" height="300px"/>
+                    </a>
+                #end
+            #end
+        #end
+        <div class="article-box-content">
+            <h2 class="article-title">
+                #if(article.isTop == 1)
+                    <span class="top-tip">置顶</span>
+                #end
+                <a href="#(article.url ??)" class="pjax">#(article.title ??)</a>
+            </h2>
+            <p class="article-content">#mdSummary(article.content,200)...</p>
+            <hr class="layui-bg-gray">
+            <span class="article-msg">
+                <i class="fa fa-user-o"></i> #(article.user.userName ??)&nbsp;
+                <i class="fa fa-eye"></i> #(article.viewCount ??)&nbsp;
+                <i class="fa fa-comment-o"></i> #(article.commentCount ??)&nbsp;
+                <i class="fa fa-clock-o"></i> #date(article.createTime, "yyyy年MM月dd日")
+            </span>
+            <a class="read-all-btn pjax" href="#(article.url ??)">阅读全文</a>
+        </div>
+    </div>
+</div>
+#else
+    <div class="layui-card">
+        <div class="layui-card-body">
+            <div class="no-article">
+                <i class="fa fa-bug" aria-hidden="true"></i> 这家伙很懒，还没发表文章~
+            </div>
+        </div>
+    </div>
+#end
